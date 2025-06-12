@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DisasterReady.Shared\DisasterReady.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,19 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
+VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReady.WebAPI", "DisasterReady.WebAPI\DisasterReady.WebAPI.csproj", "{154BB514-BCFF-4C61-9424-FA41BC869C2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReady.Domain", "DisasterReady.Domain\DisasterReady.Domain.csproj", "{EE6795D9-3712-48C0-85AA-03630D8F3848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReady.Infrastucture", "DisasterReady.Infrastucture\DisasterReady.Infrastucture.csproj", "{13C55FE6-0896-4405-821F-375B27E629E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReady.Infrastructure", "DisasterReady.Infrastucture\DisasterReady.Infrastructure.csproj", "{13C55FE6-0896-4405-821F-375B27E629E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReady.Application", "DisasterReady.Application\DisasterReady.Application.csproj", "{E205623F-02D7-4436-9621-385323FBFA4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReady.Persistence", "DisasterReady.Persistance\DisasterReady.Persistence.csproj", "{E2DA147A-2A1E-47D4-A4EE-FC86A6EFD2A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReady.Shared", "DisasterReady.Shared\DisasterReady.Shared.csproj", "{B1F28A4D-C0DB-4552-8A6F-9DDC401E238E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{949B797C-284A-48C4-91A7-825623C52415}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{B4B8751F-6868-40E1-BEE8-262BD7D211D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfraStructure", "InfraStructure", "{F9BB57C4-4DBE-4CD0-B1E6-821432CAA4F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{94A41643-7E2C-4E3C-A6B7-FCD4683C1D77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +58,18 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{154BB514-BCFF-4C61-9424-FA41BC869C2D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{EE6795D9-3712-48C0-85AA-03630D8F3848} = {949B797C-284A-48C4-91A7-825623C52415}
+		{13C55FE6-0896-4405-821F-375B27E629E9} = {F9BB57C4-4DBE-4CD0-B1E6-821432CAA4F0}
+		{E205623F-02D7-4436-9621-385323FBFA4B} = {949B797C-284A-48C4-91A7-825623C52415}
+		{E2DA147A-2A1E-47D4-A4EE-FC86A6EFD2A0} = {F9BB57C4-4DBE-4CD0-B1E6-821432CAA4F0}
+		{B1F28A4D-C0DB-4552-8A6F-9DDC401E238E} = {94A41643-7E2C-4E3C-A6B7-FCD4683C1D77}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {B4B8751F-6868-40E1-BEE8-262BD7D211D3}
+		{949B797C-284A-48C4-91A7-825623C52415} = {B4B8751F-6868-40E1-BEE8-262BD7D211D3}
+		{F9BB57C4-4DBE-4CD0-B1E6-821432CAA4F0} = {B4B8751F-6868-40E1-BEE8-262BD7D211D3}
+		{94A41643-7E2C-4E3C-A6B7-FCD4683C1D77} = {B4B8751F-6868-40E1-BEE8-262BD7D211D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {188B991B-0F5E-4A2B-B9BB-32F6FE05E683}

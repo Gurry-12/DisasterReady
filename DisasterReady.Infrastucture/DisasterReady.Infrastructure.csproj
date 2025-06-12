@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DisasterReady.Domain\DisasterReady.Domain.csproj" />
-    <ProjectReference Include="..\DisasterReady.Infrastucture\DisasterReady.Infrastructure.csproj" />
+    <ProjectReference Include="..\DisasterReady.Persistance\DisasterReady.Persistence.csproj" />
     <ProjectReference Include="..\DisasterReady.Shared\DisasterReady.Shared.csproj" />
   </ItemGroup>
 
