@@ -11,13 +11,14 @@ namespace DisasterReady.Domain.Entities
     {
         public int Id { get; set; }
         public int ChecklistId { get; set; }
-        public string ItemName { get; set; } = null!;
-        public ConditionTagEnum ConditionTag { get; set; }  // e.g., pets, infants, diabetic
-        public bool IsChecked { get; set; } = false;
+        public string Title { get; set; } = null!;
+        public string Description { get; set; } = string.Empty;
+        public bool IsCompleted { get; set; } = false;
+        public PriorityEnum Priority { get; set; } = PriorityEnum.Medium;
+        public ConditionTagEnum ConditionTag { get; set; } = ConditionTagEnum.General;
         public string Notes { get; set; } = string.Empty;
 
         // Navigation
         public Checklist Checklist { get; set; } = null!;
     }
-
 }

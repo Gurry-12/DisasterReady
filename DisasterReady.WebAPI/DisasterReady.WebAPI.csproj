@@ -17,6 +17,8 @@
   <ItemGroup>
     <ProjectReference Include="..\DisasterReady.Application\DisasterReady.Application.csproj" />
     <ProjectReference Include="..\DisasterReady.Shared\DisasterReady.Shared.csproj" />
+    <ProjectReference Include="..\DisasterReady.Persistance\DisasterReady.Persistence.csproj" />
+    <ProjectReference Include="..\DisasterReady.Domain\DisasterReady.Domain.csproj" />
   </ItemGroup>
 
 </Project>

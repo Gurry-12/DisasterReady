@@ -9,7 +9,7 @@ namespace DisasterReady.Domain.Entities
     public class Household
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public int Adults { get; set; }
         public int Children { get; set; }
         public bool HasPets { get; set; }
@@ -17,7 +17,7 @@ namespace DisasterReady.Domain.Entities
         public string Notes { get; set; } = string.Empty;
 
         // Navigation
-        public User User { get; set; } = null!;
+        public User? User { get; set; }
     }
 
 }

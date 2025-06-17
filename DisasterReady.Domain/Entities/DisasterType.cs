@@ -16,6 +16,7 @@ namespace DisasterReady.Domain.Entities
 
         // Navigation
         public ICollection<Checklist> Checklists { get; set; } = new List<Checklist>();
+        public ICollection<Alert> Alerts { get; set; } = new List<Alert>();
     }
 
 }

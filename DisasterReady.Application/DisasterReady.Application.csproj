@@ -7,9 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.8.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DisasterReady.Domain\DisasterReady.Domain.csproj" />
     <ProjectReference Include="..\DisasterReady.Infrastucture\DisasterReady.Infrastructure.csproj" />
     <ProjectReference Include="..\DisasterReady.Shared\DisasterReady.Shared.csproj" />
+    <ProjectReference Include="..\DisasterReady.Persistance\DisasterReady.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
