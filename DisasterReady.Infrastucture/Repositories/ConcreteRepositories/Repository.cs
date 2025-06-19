@@ -1,19 +1,20 @@
-using DisasterReady.Persistence.Interfaces;
+using DisasterReady.Infrastructure.Repositories.AbstractRepositories;
+using DisasterReady.Infrastucture;
 using DisasterReady.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace DisasterReady.Persistence.Repositories
+namespace DisasterReady.Infrastucture.ConcreteRepositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected readonly DisasterReadyDbContext _context;
+        private readonly DisasterReadyDbContext _context;
         protected readonly DbSet<T> _dbSet;
 
-        public Repository(DisasterReadyDbContext context)
+        public Repository( DisasterReadyDbContext context)
         {
             _context = context;
-            _dbSet = context.Set<T>();
+            _dbSet = _context.Set<T>();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -39,20 +40,17 @@ namespace DisasterReady.Persistence.Repositories
         public async Task<T> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
             return entity;
         }
 
         public void Update(T entity)
         {
             _dbSet.Update(entity);
-            _context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
-            _context.SaveChanges();
         }
 
         public async Task<bool> ExistsAsync(Expression<Func<T, bool>> filter)
@@ -64,7 +62,6 @@ namespace DisasterReady.Persistence.Repositories
         {
             if (filter == null)
                 return await _dbSet.CountAsync();
-            
             return await _dbSet.CountAsync(filter);
         }
     }

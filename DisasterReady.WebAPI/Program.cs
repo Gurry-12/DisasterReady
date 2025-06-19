@@ -1,5 +1,7 @@
-using DisasterReady.Application.Interfaces;
-using DisasterReady.Application.Services;
+using DisasterReady.Application.Services.AbstractServices;
+using DisasterReady.Application.Services.ConcreteServices;
+using DisasterReady.Infrastructure.Repositories.AbstractRepositories;
+using DisasterReady.Infrastucture.ConcreteRepositories;
 using DisasterReady.Persistence.Data;
 using DisasterReady.Persistence.Extensions;
 using DisasterReady.WebAPI.Middleware;
@@ -31,7 +33,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<DisasterReadyDbContext>();
-    await DbInitializer.InitializeAsync(context);
+    //await DbInitializer.InitializeAsync(context);
 }
 
 // Configure the HTTP request pipeline.

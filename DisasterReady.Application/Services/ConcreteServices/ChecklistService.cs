@@ -1,8 +1,9 @@
-using DisasterReady.Application.Interfaces;
+using DisasterReady.Application.Services.AbstractServices;
 using DisasterReady.Domain.Entities;
-using DisasterReady.Persistence.Interfaces;
+using DisasterReady.Infrastructure.Repositories.AbstractRepositories;
 
-namespace DisasterReady.Application.Services
+
+namespace DisasterReady.Application.Services.ConcreteServices
 {
     public class ChecklistService : IChecklistService
     {

@@ -1,4 +1,4 @@
-using DisasterReady.Application.Interfaces;
+using DisasterReady.Application.Services.AbstractServices;
 using DisasterReady.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 

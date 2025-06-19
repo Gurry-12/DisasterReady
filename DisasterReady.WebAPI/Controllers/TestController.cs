@@ -1,4 +1,4 @@
-using DisasterReady.Persistence.Interfaces;
+using DisasterReady.Infrastructure.Repositories.AbstractRepositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DisasterReady.WebAPI.Controllers

@@ -11,7 +11,8 @@ namespace DisasterReady.Shared.Enums
         Low,
         Moderate,
         High,
-        Critical
+        Critical,
+        Medium
     }
 
 }

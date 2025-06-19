@@ -1,7 +1,7 @@
 using DisasterReady.Domain.Entities;
 using DisasterReady.Shared.Enums;
 
-namespace DisasterReady.Persistence.Interfaces
+namespace DisasterReady.Infrastructure.Repositories.AbstractRepositories
 {
     public interface IAlertRepository : IRepository<Alert>
     {

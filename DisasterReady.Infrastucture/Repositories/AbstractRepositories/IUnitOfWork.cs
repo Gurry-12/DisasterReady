@@ -1,6 +1,6 @@
 using DisasterReady.Domain.Entities;
 
-namespace DisasterReady.Persistence.Interfaces
+namespace DisasterReady.Infrastructure.Repositories.AbstractRepositories
 {
     public interface IUnitOfWork : IDisposable
     {

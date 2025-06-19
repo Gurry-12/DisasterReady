@@ -14,7 +14,8 @@ namespace DisasterReady.Shared.Enums
         Pets,
         Diabetic,
         Disabled,
-        Immunocompromised
+        Immunocompromised,
+        Children
     }
 
 }
