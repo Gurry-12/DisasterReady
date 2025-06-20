@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DisasterReady.WebAPI.Controllers
 {
+    /// <summary>
+    /// Controller for managing users and user-related queries.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
@@ -16,6 +19,9 @@ namespace DisasterReady.WebAPI.Controllers
             _userService = userService;
         }
 
+        /// <summary>
+        /// Retrieves all users.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -23,6 +29,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(users);
         }
 
+        /// <summary>
+        /// Retrieves a user by their unique identifier.
+        /// </summary>
+        /// <param name="id">The user ID.</param>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -31,6 +41,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Retrieves a user by their email address.
+        /// </summary>
+        /// <param name="email">The user's email address.</param>
         [HttpGet("by-email/{email}")]
         public async Task<IActionResult> GetByEmail(string email)
         {
@@ -39,6 +53,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Retrieves users by their role.
+        /// </summary>
+        /// <param name="role">The user role.</param>
         [HttpGet("by-role/{role}")]
         public async Task<IActionResult> GetByRole(UserRoleEnum role)
         {
@@ -46,6 +64,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(users);
         }
 
+        /// <summary>
+        /// Creates a new user.
+        /// </summary>
+        /// <param name="user">The user to create.</param>
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {
@@ -53,6 +75,11 @@ namespace DisasterReady.WebAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
+        /// <summary>
+        /// Updates an existing user.
+        /// </summary>
+        /// <param name="id">The user ID.</param>
+        /// <param name="user">The updated user object.</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, User user)
         {
@@ -62,6 +89,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(updated);
         }
 
+        /// <summary>
+        /// Deletes a user by their ID.
+        /// </summary>
+        /// <param name="id">The user ID.</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

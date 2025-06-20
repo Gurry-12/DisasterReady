@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DisasterReady.WebAPI.Controllers
 {
+    /// <summary>
+    /// Controller for managing households and household-related queries.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class HouseholdsController : ControllerBase
@@ -15,6 +18,9 @@ namespace DisasterReady.WebAPI.Controllers
             _householdService = householdService;
         }
 
+        /// <summary>
+        /// Retrieves all households.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -22,6 +28,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(households);
         }
 
+        /// <summary>
+        /// Retrieves a household by its unique identifier.
+        /// </summary>
+        /// <param name="id">The household ID.</param>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -30,6 +40,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(household);
         }
 
+        /// <summary>
+        /// Retrieves a household by user ID.
+        /// </summary>
+        /// <param name="userId">The user ID.</param>
         [HttpGet("by-user/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
@@ -38,6 +52,9 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(household);
         }
 
+        /// <summary>
+        /// Retrieves all households with medical needs.
+        /// </summary>
         [HttpGet("with-medical-needs")]
         public async Task<IActionResult> GetWithMedicalNeeds()
         {
@@ -45,6 +62,9 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(households);
         }
 
+        /// <summary>
+        /// Retrieves all households with pets.
+        /// </summary>
         [HttpGet("with-pets")]
         public async Task<IActionResult> GetWithPets()
         {
@@ -52,6 +72,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(households);
         }
 
+        /// <summary>
+        /// Creates a new household.
+        /// </summary>
+        /// <param name="household">The household to create.</param>
         [HttpPost]
         public async Task<IActionResult> Create(Household household)
         {
@@ -59,6 +83,11 @@ namespace DisasterReady.WebAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
+        /// <summary>
+        /// Updates an existing household.
+        /// </summary>
+        /// <param name="id">The household ID.</param>
+        /// <param name="household">The updated household object.</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Household household)
         {
@@ -68,6 +97,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(updated);
         }
 
+        /// <summary>
+        /// Deletes a household by its ID.
+        /// </summary>
+        /// <param name="id">The household ID.</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

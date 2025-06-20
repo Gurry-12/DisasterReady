@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DisasterReady.WebAPI.Controllers
 {
+    /// <summary>
+    /// Controller for managing emergency tips.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class EmergencyTipsController : ControllerBase
@@ -16,6 +19,9 @@ namespace DisasterReady.WebAPI.Controllers
             _emergencyTipService = emergencyTipService;
         }
 
+        /// <summary>
+        /// Retrieves all emergency tips.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -23,6 +29,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(tips);
         }
 
+        /// <summary>
+        /// Retrieves an emergency tip by its unique identifier.
+        /// </summary>
+        /// <param name="id">The emergency tip ID.</param>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -31,6 +41,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(tip);
         }
 
+        /// <summary>
+        /// Retrieves emergency tips by disaster type.
+        /// </summary>
+        /// <param name="disasterType">The disaster type.</param>
         [HttpGet("by-disaster-type/{disasterType}")]
         public async Task<IActionResult> GetByDisasterType(DisasterTypeEnum disasterType)
         {
@@ -38,6 +52,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(tips);
         }
 
+        /// <summary>
+        /// Retrieves a random set of emergency tips.
+        /// </summary>
+        /// <param name="count">The number of random tips to retrieve.</param>
         [HttpGet("random/{count}")]
         public async Task<IActionResult> GetRandom(int count = 5)
         {
@@ -45,6 +63,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(tips);
         }
 
+        /// <summary>
+        /// Creates a new emergency tip.
+        /// </summary>
+        /// <param name="tip">The emergency tip to create.</param>
         [HttpPost]
         public async Task<IActionResult> Create(EmergencyTip tip)
         {
@@ -52,6 +74,11 @@ namespace DisasterReady.WebAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
+        /// <summary>
+        /// Updates an existing emergency tip.
+        /// </summary>
+        /// <param name="id">The emergency tip ID.</param>
+        /// <param name="tip">The updated emergency tip object.</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, EmergencyTip tip)
         {
@@ -61,6 +88,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(updated);
         }
 
+        /// <summary>
+        /// Deletes an emergency tip by its ID.
+        /// </summary>
+        /// <param name="id">The emergency tip ID.</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

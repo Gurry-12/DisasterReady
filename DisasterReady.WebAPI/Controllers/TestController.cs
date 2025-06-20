@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DisasterReady.WebAPI.Controllers
 {
+    /// <summary>
+    /// Controller for test endpoints to retrieve users, disaster types, emergency tips, and alerts.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class TestController : ControllerBase
@@ -14,6 +17,9 @@ namespace DisasterReady.WebAPI.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        /// <summary>
+        /// Retrieves all users (test endpoint).
+        /// </summary>
         [HttpGet("users")]
         public async Task<IActionResult> GetUsers()
         {
@@ -21,6 +27,9 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(users);
         }
 
+        /// <summary>
+        /// Retrieves all disaster types (test endpoint).
+        /// </summary>
         [HttpGet("disaster-types")]
         public async Task<IActionResult> GetDisasterTypes()
         {
@@ -28,6 +37,9 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(disasterTypes);
         }
 
+        /// <summary>
+        /// Retrieves all emergency tips (test endpoint).
+        /// </summary>
         [HttpGet("emergency-tips")]
         public async Task<IActionResult> GetEmergencyTips()
         {
@@ -35,6 +47,9 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(tips);
         }
 
+        /// <summary>
+        /// Retrieves all alerts (test endpoint).
+        /// </summary>
         [HttpGet("alerts")]
         public async Task<IActionResult> GetAlerts()
         {

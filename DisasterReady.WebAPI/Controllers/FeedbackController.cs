@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DisasterReady.WebAPI.Controllers
 {
+    /// <summary>
+    /// Controller for managing user feedback.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class FeedbackController : ControllerBase
@@ -16,6 +19,9 @@ namespace DisasterReady.WebAPI.Controllers
             _feedbackService = feedbackService;
         }
 
+        /// <summary>
+        /// Retrieves all feedback entries.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -23,6 +29,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(feedback);
         }
 
+        /// <summary>
+        /// Retrieves a feedback entry by its unique identifier.
+        /// </summary>
+        /// <param name="id">The feedback ID.</param>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -31,6 +41,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(feedback);
         }
 
+        /// <summary>
+        /// Retrieves feedback entries by user ID.
+        /// </summary>
+        /// <param name="userId">The user ID.</param>
         [HttpGet("by-user/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
@@ -38,6 +52,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(feedback);
         }
 
+        /// <summary>
+        /// Retrieves feedback entries by feedback type.
+        /// </summary>
+        /// <param name="type">The feedback type.</param>
         [HttpGet("by-type/{type}")]
         public async Task<IActionResult> GetByType(FeedbackTypeEnum type)
         {
@@ -45,6 +63,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(feedback);
         }
 
+        /// <summary>
+        /// Retrieves the most recent feedback entries.
+        /// </summary>
+        /// <param name="count">The number of recent feedback entries to retrieve.</param>
         [HttpGet("recent/{count}")]
         public async Task<IActionResult> GetRecent(int count = 10)
         {
@@ -52,6 +74,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(feedback);
         }
 
+        /// <summary>
+        /// Creates a new feedback entry.
+        /// </summary>
+        /// <param name="feedback">The feedback entry to create.</param>
         [HttpPost]
         public async Task<IActionResult> Create(Feedback feedback)
         {
@@ -59,6 +85,11 @@ namespace DisasterReady.WebAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
+        /// <summary>
+        /// Updates an existing feedback entry.
+        /// </summary>
+        /// <param name="id">The feedback ID.</param>
+        /// <param name="feedback">The updated feedback object.</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Feedback feedback)
         {
@@ -68,6 +99,10 @@ namespace DisasterReady.WebAPI.Controllers
             return Ok(updated);
         }
 
+        /// <summary>
+        /// Deletes a feedback entry by its ID.
+        /// </summary>
+        /// <param name="id">The feedback ID.</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

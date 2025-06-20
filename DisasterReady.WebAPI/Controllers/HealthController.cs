@@ -2,10 +2,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DisasterReady.WebAPI.Controllers
 {
+    /// <summary>
+    /// Controller for health checks and service status.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class HealthController : ControllerBase
     {
+        /// <summary>
+        /// Returns the health status of the API service.
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -18,6 +24,9 @@ namespace DisasterReady.WebAPI.Controllers
             });
         }
 
+        /// <summary>
+        /// Simple ping endpoint to check API availability.
+        /// </summary>
         [HttpGet("ping")]
         public IActionResult Ping()
         {
