@@ -1,4 +1,3 @@
-
 using DisasterReady.Infrastructure.Repositories.AbstractRepositories;
 using DisasterReady.Infrastucture.ConcreteRepositories;
 using DisasterReady.Persistence.Data;
@@ -14,7 +13,7 @@ namespace DisasterReady.Persistence.Extensions
         {
             // Add DbContext
             services.AddDbContext<DisasterReadyDbContext>(options =>
-                options.UseSqlServer(
+                options.UseSqlite(
                     configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(DisasterReadyDbContext).Assembly.FullName)
                 ));

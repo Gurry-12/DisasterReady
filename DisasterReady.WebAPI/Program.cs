@@ -5,6 +5,7 @@ using DisasterReady.Infrastucture.ConcreteRepositories;
 using DisasterReady.Persistence.Data;
 using DisasterReady.Persistence.Extensions;
 using DisasterReady.WebAPI.Middleware;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 
 // Add Persistence Services
 builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddDbContext<DisasterReadyDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -46,6 +49,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.MapGet("/", context => {
+        context.Response.Redirect("/swagger");
+        return Task.CompletedTask;
+    });
 }
 
 app.UseHttpsRedirection();

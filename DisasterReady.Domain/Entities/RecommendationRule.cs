@@ -14,7 +14,7 @@ namespace DisasterReady.Domain.Entities
         public DisasterTypeEnum DisasterType { get; set; } // e.g., "Flood", "Earthquake"
         public string SuggestedItem { get; set; } = null!;
         public string Justification { get; set; } = string.Empty;
-        public string Recommendation { get; set; }
+        public string? Recommendation { get; set; }
     }
 
 }
