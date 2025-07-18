@@ -9,14 +9,9 @@ namespace DisasterReady.Persistence.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
-            // Add DbContext
-            services.AddDbContext<DisasterReadyDbContext>(options =>
-                options.UseSqlite(
-                    configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly(typeof(DisasterReadyDbContext).Assembly.FullName)
-                ));
+            
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
