@@ -1,8 +1,4 @@
 using DisasterReady.Application.Extentions;
-using DisasterReady.Application.Services.AbstractServices;
-using DisasterReady.Application.Services.ConcreteServices;
-using DisasterReady.Infrastructure.Repositories.AbstractRepositories;
-using DisasterReady.Infrastucture.ConcreteRepositories;
 using DisasterReady.Persistence.Data;
 using DisasterReady.Persistence.Extensions;
 using DisasterReady.Persistence.Extentions;
