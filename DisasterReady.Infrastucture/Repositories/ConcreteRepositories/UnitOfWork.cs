@@ -1,83 +1,70 @@
-using DisasterReady.Domain.Entities;
 using DisasterReady.Infrastructure.Repositories.AbstractRepositories;
-using DisasterReady.Infrastucture;
 using DisasterReady.Persistence.Data;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace DisasterReady.Infrastucture.ConcreteRepositories
+namespace DisasterReady.Infrastructure.Repositories.ConcreteRepositories
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DisasterReadyDbContext _context;
-        private IDbContextTransaction? _transaction;
+        private IDbContextTransaction? _currentTransaction;
 
         public IUserRepository Users { get; }
         public IAlertRepository Alerts { get; }
-        public IRepository<Checklist> Checklists { get; }
-        public IRepository<ChecklistItem> ChecklistItems { get; }
-        public IRepository<Household> Households { get; }
-        public IRepository<EmergencyTip> EmergencyTips { get; }
-        public IRepository<Feedback> Feedbacks { get; }
-        public IRepository<DisasterType> DisasterTypes { get; }
-        public IRepository<RecommendationRule> RecommendationRules { get; }
 
-        public UnitOfWork(DisasterReadyDbContext context,
-            IUserRepository userRepository,
-            IAlertRepository alertRepository,
-            IRepository<Checklist> checklistRepository,
-            IRepository<ChecklistItem> checklistItemRepository,
-            IRepository<Household> householdRepository,
-            IRepository<EmergencyTip> emergencyTipRepository,
-            IRepository<Feedback> feedbackRepository,
-            IRepository<DisasterType> disasterTypeRepository,
-            IRepository<RecommendationRule> recommendationRuleRepository)
+        public UnitOfWork(
+            DisasterReadyDbContext context,
+            IUserRepository users,
+            IAlertRepository alerts
+        )
         {
             _context = context;
-            Users = userRepository;
-            Alerts = alertRepository;
-            Checklists = checklistRepository;
-            ChecklistItems = checklistItemRepository;
-            Households = householdRepository;
-            EmergencyTips = emergencyTipRepository;
-            Feedbacks = feedbackRepository;
-            DisasterTypes = disasterTypeRepository;
-            RecommendationRules = recommendationRuleRepository;
+            Users = users;
+            Alerts = alerts;
         }
 
+
         public async Task<int> SaveChangesAsync()
-        {
-            return await _context.SaveChangesAsync();
-        }
+            => await _context.SaveChangesAsync();
 
         public async Task BeginTransactionAsync()
         {
-            _transaction = await _context.Database.BeginTransactionAsync();
+            if (_currentTransaction != null) return;
+            _currentTransaction = await _context.Database.BeginTransactionAsync();
         }
-
         public async Task CommitTransactionAsync()
         {
-            if (_transaction != null)
+            try
             {
-                await _transaction.CommitAsync();
-                await _transaction.DisposeAsync();
-                _transaction = null;
+                await SaveChangesAsync();
+                if (_currentTransaction != null)
+                {
+                    await _currentTransaction.CommitAsync();
+                    await _currentTransaction.DisposeAsync();
+                    _currentTransaction = null;
+                }
+            }
+            catch
+            {
+                await RollbackTransactionAsync();
+                throw;
             }
         }
 
         public async Task RollbackTransactionAsync()
         {
-            if (_transaction != null)
+            if (_currentTransaction != null)
             {
-                await _transaction.RollbackAsync();
-                await _transaction.DisposeAsync();
-                _transaction = null;
+                await _currentTransaction.RollbackAsync();
+                await _currentTransaction.DisposeAsync();
+                _currentTransaction = null;
             }
         }
 
         public void Dispose()
         {
             _context.Dispose();
-            _transaction?.Dispose();
+            _currentTransaction?.Dispose();
         }
     }
-} 
+}

@@ -21,6 +21,7 @@ namespace DisasterReady.Application.Extentions
             services.AddScoped<IDisasterTypeService, DisasterTypeService>();
             services.AddScoped<IHouseholdService, HouseholdService>();
             services.AddScoped<IFeedbackService, FeedbackService>();
+            services.AddScoped<ILoginService, LoginService>();
 
             return services;
         }
